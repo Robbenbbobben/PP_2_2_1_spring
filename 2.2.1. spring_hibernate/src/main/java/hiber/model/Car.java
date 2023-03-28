@@ -6,13 +6,13 @@ import javax.persistence.*;
 @Table (name = "cars")
 public class Car {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column
     private String model;
     @Column
     private int series;
-    @OneToOne (cascade = CascadeType.ALL, mappedBy = "car")
+    @OneToOne (fetch = FetchType.LAZY)
+    @MapsId
     private User user;
 
     public Car() {}
